@@ -1,0 +1,32 @@
+body {
+  font-family: monospace, monospace;
+}
+
+::selection {
+  color: white;
+  background: black;
+}
+
+a {
+  color: black;
+}
+
+a:focus-visible, a:hover {
+  outline: none;
+  text-decoration: none;
+}
+
+button, a.button {
+  cursor: pointer;
+  background: black;
+  color: white;
+  border: 0.25em solid black;
+  font-size: inherit;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+button:focus-visible, a.button:focus-visible, button:hover, a.button:hover {
+  outline: none;  
+  text-decoration: underline;
+}

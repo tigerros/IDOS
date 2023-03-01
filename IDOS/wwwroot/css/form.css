@@ -1,0 +1,33 @@
+form input {
+    border-radius: 0;
+}
+
+form input[type=text], form input[type=number] {
+    border: 1px solid black;
+}
+
+input[type=checkbox]:focus-visible {
+    outline: 2px dashed black;
+}
+
+form input[type=text]:focus, form input[type=number]:focus {
+    border-color: transparent !important;
+    outline: 2px dashed black;
+}
+
+form input[type=text], form input[type=number], form input[type=submit], form a {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+form input[type=submit]:hover {
+    text-decoration: underline;
+}
+
+form input[type=submit] {
+    cursor: pointer;
+    background: black;
+    color: white;
+    border: 0.25em solid black;
+    text-decoration: none;
+}

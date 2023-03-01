@@ -1,0 +1,68 @@
+﻿@using System.Text
+@using IDOS.Controllers
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    // Use nameof to prevent magic strings
+    Dictionary<string, string[]> controllers = new() {
+        [nameof(HomeController)] = new[] {
+            nameof(HomeController.Index),
+            nameof(HomeController.StopGroups),
+            nameof(HomeController.Lines),
+        },
+    };
+}
+
+@functions {
+    static string PascalCaseToNormal(string pascalString) {
+        var builder = new StringBuilder(pascalString.Length);
+
+        for (int i = 0; i < pascalString.Length; i++) {
+            char c = pascalString[i];
+
+            if ((i > 0) && (c >= 65) && (c <= 90)) builder.Append(' ').Append((char)(c + 32));
+            else builder.Append(c);
+        }
+
+        return builder.ToString();
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@Model.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/css/site.css"/>
+    <link rel="stylesheet" type="text/css" href="~/css/validation.css"/>
+    <link rel="stylesheet" type="text/css" href="~/css/form.css"/>
+    <link rel="stylesheet" type="text/css" href="~/css/table.css"/>
+    <link rel="stylesheet" type="text/css" href="~/css/header.css"/>
+</head>
+<body>
+<header>
+    @foreach (string controller in controllers.Keys) {
+        string controllerName = controller[..^10];
+
+        foreach (string pageName in controllers[controller]) {
+            string linkText = pageName == "Index" ? PascalCaseToNormal(controllerName) : PascalCaseToNormal(pageName);
+
+            if ((Model.Title == pageName) || ((Model.Title == controllerName) && (pageName == "Index"))) {
+                <h2><a class="current" asp-controller=@controllerName asp-action=@pageName>@linkText</a></h2>
+            } else {
+                <h2><a asp-controller=@controllerName asp-action=@pageName>@linkText</a></h2>
+            }
+        }
+    }
+</header>
+
+@RenderBody()
+<hr/>
+
+<footer>
+    <i>Aurel Leonard Danel © @DateTime.Today.Year.ToString()</i>
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

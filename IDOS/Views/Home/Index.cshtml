@@ -1,0 +1,25 @@
+﻿@model BaseViewModel
+@{
+    Model.Title = "Home";
+}
+
+<h1>Forms:</h1>
+
+<partial name="_StopGroupSearchForm" model=@(new StopGroupsViewModel()) />
+<partial name="_LineSearchForm" model=@(new LinesViewModel()) />
+
+<h3>Shortest path between two stations</h3>
+
+<form asp-action="Error" asp-route-message="Not finished">
+    <table>
+        <tr>
+            <td><label>Stop group 1:</label></td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <td><label>Stop group 2:</label></td>
+            <td><input type="text"/></td>
+        </tr>
+    </table>
+    <button type="submit">Calculate</button>
+</form>

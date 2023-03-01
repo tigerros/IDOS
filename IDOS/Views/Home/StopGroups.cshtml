@@ -1,0 +1,19 @@
+﻿@model StopGroupsViewModel
+@{
+    Model.Title = "Stops";
+}
+
+<partial name="_StopGroupSearchForm" model=@(new StopGroupsViewModel{
+                                               Query = Model.Query,
+                                               Page = Model.Page,
+                                               ItemsPerPage = Model.ItemsPerPage, }) />
+
+<hr/>
+
+<h3>@(Model.Query == null ? "No query given; listing all stop groups" : $"Best search results for stop group \"{Model.QueryResults}\""):</h3>
+
+@if (Model.QueryResults.Length == 0) {
+    <span>None.</span>
+} else {
+    <stop-group-table stop-groups="QueryResults"></stop-group-table>
+}

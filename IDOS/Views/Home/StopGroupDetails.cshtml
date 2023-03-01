@@ -1,0 +1,33 @@
+﻿@model StopGroupDetailsViewModel
+@{
+    Model.Title = $"Stop group \"{Model.StopGroup.Name}\" details";
+}
+
+<h2>Stop group "@Model.StopGroup.Name"</h2>
+
+<table>
+    <tbody>
+    <tr>
+        <td>Municipality</td>
+        <td>@Model.StopGroup.Municipality</td>
+    </tr>
+    <tr>
+        <td>Latitude</td>
+        <td>@Model.StopGroup.AverageLatitude.ToString("00.000000")</td>
+    </tr>
+    <tr>
+        <td>Longitude</td>
+        <td>@Model.StopGroup.AverageLongitude.ToString("00.000000")</td>
+    </tr>
+    <tr>
+        <td>Is train?</td>
+        <td>@(Model.StopGroup.IsTrain ? "Yes" : "No")</td>
+    </tr>
+    </tbody>
+</table>
+
+<hr/>
+
+<h3>Lines:</h3>
+
+<line-table lines="StopGroupLines"></line-table>

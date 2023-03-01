@@ -1,0 +1,33 @@
+﻿@model LineDetailsViewModel
+@{
+    Model.Title = $"Line \"{Model.Line.Name}\" details";
+}
+
+<h2>Line "@Model.Line.Name"</h2>
+
+<table>
+    <tbody>
+    <tr>
+        <td>Type</td>
+        <td>@Model.Line.Type.ToString()</td>
+    </tr>
+    <tr>
+        <td>Is night?</td>
+        <td>@(Model.Line.IsNight ? "Yes" : "No")</td>
+    </tr>
+    <tr>
+        <td>Directions</td>
+        <td>@string.Join(" <--> ", Model.Line.Directions)</td>
+    </tr>
+    </tbody>
+</table>
+
+<hr/>
+
+<h3>Stop groups that the line passes through:</h3>
+
+@if (Model.LineStopGroups.Length == 0) {
+    <span>None. None? Something went wrong.</span>
+} else {
+    <stop-group-table stop-groups="LineStopGroups"></stop-group-table>
+}

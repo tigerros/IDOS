@@ -1,0 +1,22 @@
+﻿@model StopGroupsViewModel
+
+<form asp-action="StopGroups" method="get">
+    <table>
+        <tr>
+            <td><label asp-for="Query"></label></td>
+            <td><input asp-for="Query"/></td>
+            <td><span asp-validation-for="Query"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Page"></label></td>
+            <td><input asp-for="Page"/></td>
+            <td><span asp-validation-for="Page"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="ItemsPerPage"></label></td>
+            <td><input asp-for="ItemsPerPage"/></td>
+            <td><span asp-validation-for="ItemsPerPage"></span></td>
+        </tr>
+    </table>
+    <button type="submit">Search</button>
+</form>

@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model LinesViewModel
+@{
+    Model.Title = "Lines";
+}
+
+<partial name="_LineSearchForm" model=@(new LinesViewModel()) />
+
+<h3>@(Model.Query == null ? "No query given; listing all lines" : $"Best search results for line \"{Model.Query}\""):</h3>
+
+<hr/>
+
+<line-table lines="QueryResults"></line-table>
