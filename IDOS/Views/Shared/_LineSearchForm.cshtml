@@ -17,18 +17,11 @@
             <td><input asp-for="ItemsPerPage"/></td>
             <td><span asp-validation-for="ItemsPerPage"></span></td>
         </tr>
-        @for (int i = 0; i < Model.TrafficTypes.Length; i++) {
+        @for (int i = 0; i < Model.TrafficTypes.Count; i++) {
             <tr>
                 @{ int i1 = i; }
-                <td><label asp-for="@Model.TrafficTypes[i1].Checked">@Model.TrafficTypes[i1].Text</label></td>
-                <td><input type="checkbox" asp-for="@Model.TrafficTypes[i1].Checked"/></td>
-                <td><input type="hidden" asp-for="@Model.TrafficTypes[i1].Text"/></td>
-                
-                @* <td>@Model.TrafficTypes[i].Text</td> *@
-                @* <td>@Html.CheckBoxFor(model => model.TrafficTypes[i1].Checked)</td> *@
-                @* $1$ <td><input asp-for="TrafficTypes[i1  ].Checked" type="checkbox"/></td> #1# *@
-                @* <td><input asp-for="TrafficTypes[i1].Text" type="hidden"/></td> *@
-                @* $1$ <td>@Html.HiddenFor(model => model.TrafficTypes[i1].Text)</td> #1# *@
+                <td><label asp-for="@Model.TrafficTypes[i].Checked">@Model.TrafficTypes[i].Text</label></td>
+                <td><input asp-for="@Model.TrafficTypes[i].Checked"/></td>
             </tr>
         }
     </table>

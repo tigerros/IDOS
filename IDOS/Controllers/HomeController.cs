@@ -45,7 +45,7 @@ public class HomeController : Controller {
 
 	[HttpGet]
 	public IActionResult Lines(LinesViewModel formResponse) {
-		Console.WriteLine("Traffic types length: " + formResponse.TrafficTypes.Length);
+		Console.WriteLine("Traffic types length: " + formResponse.TrafficTypes.Count);
 		foreach (CheckBox checkBox in formResponse.TrafficTypes) {
 			Console.WriteLine($"{checkBox.Text} checked: {checkBox.Checked}");
 		}
@@ -54,7 +54,7 @@ public class HomeController : Controller {
 			Page = formResponse.Page,
 			ItemsPerPage = formResponse.ItemsPerPage,
 			QueryResults = LinesViewModel.GetQueryResults(formResponse.Query, 
-				formResponse.Page, 
+				formResponse.Page,	
 				formResponse.ItemsPerPage,
 				emptyQueryResult: _lineService.Lines,
 				validQueryResult: query => _lineService.Search(query)),
